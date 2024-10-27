@@ -14,5 +14,5 @@ export function formatDate(date:string){
 }
 
 export function parseServerActionResponse<T>(response:T){
-  JSON.parse(JSON.stringify(response))
+  return JSON.parse(JSON.stringify(response))
 }

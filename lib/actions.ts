@@ -9,7 +9,7 @@ export const createPitch = async (state: any, form: FormData, pitch: string) => 
    const session = await auth()
    if(!session) return parseServerActionResponse({status:'ERROR',error:'Unauthorized'})
    const{title,description,category,link} = Object.fromEntries(
-    Array.from(form).filter(([key]) => key !== "pitch"),
+   Array.from(form).filter(([key]) => key !== "pitch")
    )
    const slug = slugify(title as string, { lower: true, strict: true });
 
@@ -20,7 +20,7 @@ export const createPitch = async (state: any, form: FormData, pitch: string) => 
         category,
         image: link,
         slug: {
-          _type: slug,
+          _type: slug,//change 'slug'->slug
           current: slug,
         },
         author: {
@@ -34,6 +34,7 @@ export const createPitch = async (state: any, form: FormData, pitch: string) => 
 
       return parseServerActionResponse({
         ...result,
+       
         error: "",
         status: "SUCCESS",
       });
@@ -46,3 +47,4 @@ export const createPitch = async (state: any, form: FormData, pitch: string) => 
       status: "ERROR"});
    }
 }
+
